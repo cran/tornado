@@ -25,3 +25,12 @@ test_that("importance lm works", {
   expect_equal(class(imp), "importance_plot")
   plot(imp)
 })
+
+test_that("importance lm works with weights", {
+  model1 <- lm(mpg ~ cyl*wt*hp + gear + carb, data = mtcars, weights = rep(1:2, nrow(mtcars) / 2))
+  model_reduced <- lm(mpg ~ 1, data = mtcars, weights = rep(1:2, nrow(mtcars) / 2))
+
+  imp <- importance(model1, model_reduced)
+  expect_equal(class(imp), "importance_plot")
+  plot(imp)
+})

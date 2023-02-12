@@ -1,0 +1,7 @@
+Changes in version 0.1.1 (2022-01-08)
+
+- Initial release of the tornado package.
+
+Changes in version 0.1.2 (2023-02-11)
+
+- Fix for models with weights for importance plots

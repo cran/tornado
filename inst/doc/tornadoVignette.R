@@ -1,7 +1,9 @@
 ## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 7, 
+  fig.height = 5
 )
 has_survival <- require(survival)
 has_caret <- require(caret) & require(randomForest)
@@ -116,7 +118,7 @@ if (has_caret)
                         y = iris$Species, method = "rf")
   torn <- tornado::tornado(gtest, type = "percentiles", alpha = 0.10, class_number = 1)
   g <- plot(torn, plot = FALSE, xlabel = "Probability of the Setosa Species")
-  g <- g + ggtitle("Classifier caret::train randomforest, 10th to 90th percentiles of each variable")
+  g <- g + ggtitle("Classifier caret::train 'rf', 10th to 90th perc. of each var.")
   plot(g)
 
   torn <- tornado::tornado(gtest, type = "percentiles", alpha = 0.10, class_number = 2)
@@ -172,7 +174,7 @@ if (has_caret)
                         y = iris$Species, method = "rf")
   imp <- tornado::importance(gtest)
   g <- plot(imp, plot = FALSE)
-  g <- g + ggtitle("Classifier caret::train randomforest: variable improtance")
+  g <- g + ggtitle("Classifier caret::train randomforest: variable importance")
   plot(g)
 } else
 {
