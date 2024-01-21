@@ -1,14 +1,16 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.width = 7, 
   fig.height = 5
 )
-has_survival <- require(survival)
-has_caret <- require(caret) & require(randomForest)
-has_glmnet <- require(glmnet)
+has_survival <- requireNamespace("survival", quietly = TRUE)
+has_caret <- requireNamespace("caret", quietly = TRUE) & 
+  requireNamespace("randomForest", quietly = TRUE)
+has_glmnet <- requireNamespace("glmnet", quietly = TRUE)
 require(tornado)
+require(ggplot2)
 
 ## ----datasets, echo=TRUE------------------------------------------------------
 mtcars_w_factors <- mtcars
